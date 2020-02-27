@@ -50,9 +50,9 @@ export default {
       drawer: false,
       item: 1,
       items: [
-        { text: 'Real-Time', icon: 'mdi-clock', to: '/home' },
-        { text: 'Audience', icon: 'mdi-account', to: '/about' },
-        { text: 'Conversions', icon: 'mdi-flag', to: '/about2' }
+        { text: 'Real-Time', icon: 'mdi-clock', to: '/about' },
+        { text: 'Seat', icon: 'mdi-account', to: '/about2' },
+        { text: 'Conversions', icon: 'mdi-flag', to: '/lectures/card' }
       ]
     }
   },
