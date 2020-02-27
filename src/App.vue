@@ -1,35 +1,6 @@
 <template>
-  <v-app>
-    <div>
-    <v-app-bar color="#F50057" dense>
-      <v-toolbar-title class="title">JARI</v-toolbar-title>
-      <v-toolbar-title class="font-weight-light, overline"> for OTSK</v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-toolbar-items>
-      <v-btn icon>
-      <v-icon>mdi-account-search</v-icon>
-      </v-btn>
-      <v-card-actions>
-        <v-spacer></v-spacer>
-       <v-btn color="dark" @click="signInWithGoogle">
-        <v-icon>mdi-google</v-icon>
-        Sign In   </v-btn>
-      </v-card-actions>
-      </v-toolbar-items>
-          <template v-slot:extension>
-        <!-- <v-tabs v-model="item" centered color="dark" grow>
-        <v-tab-item v-for="(item,i) in items" :key="i" :to="item.to">
-         <v-tab-item-content v-text="item.text"></v-tab-item-content>
-        </v-tab-item>
-        </v-tabs> -->
-        <v-tabs color="dark" centered grow>
-           <v-tab>Item One</v-tab>
-          <v-tab>Item Two</v-tab>
-          <v-tab>Item Three</v-tab>
-        </v-tabs>
-      </template>
-    </v-app-bar>
-    </div>
+  <v-app class="grey lighten-4">
+    <Nav />
 
        <v-content>
       <router-view/>
@@ -38,9 +9,10 @@
 </template>
 
 <script>
-
+import Nav from '@/components/Nav'
 export default {
   name: 'App',
+  components: { Nav },
   data () {
     return {
     //   tab: null,
