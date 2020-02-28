@@ -1,42 +1,23 @@
 <template>
 <nav>
-    <!-- navigation-drawer -->
-    <v-navigation-drawer v-model="drawer" fixed app>
-      <v-list>
-      <v-subheader>Menu</v-subheader>
-      <v-list-item-group v-model="item" color="pink">
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-        >
-          <v-list-item-icon>
-            <v-icon v-text="item.icon"></v-icon>
-          </v-list-item-icon>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.text"></v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list-item-group>
-    </v-list>
-    </v-navigation-drawer>
-    <v-app-bar dense app>
-    <v-app-bar-nav-icon class="grey--text" @click="drawer=!drawer"></v-app-bar-nav-icon>
-    <!-- toolbar-left -->
-      <v-toolbar-title>
+    <v-app-bar dense>
+      <v-toolbar-title fixed>
           <span class="headline">JARI</span>
           <span class="font-weight-light overline grey--text">  for OTSK</span>
           </v-toolbar-title>
-      <v-spacer></v-spacer>
-    <!-- toolbar-right -->
+      <v-tabs v-model="tab" background-color="transparent" color="pink accent-3" centered>
+      <v-tab v-for="item in items" :key="item.tab" :to="item.to">
+        {{ item.tab }}
+      </v-tab>
+    </v-tabs>
       <v-toolbar-items>
+      <!-- <v-spacer></v-spacer> -->
       <v-btn icon>
       <v-icon>mdi-account-search</v-icon>
       </v-btn>
       <v-card-actions>
         <v-spacer></v-spacer>
-       <v-btn color="dark" text @click="signInWithGoogle">
-        <v-icon>mdi-google</v-icon>
+       <v-btn color="pink accent-3" text @click="signInWithGoogle">
            Sign In   </v-btn>
       </v-card-actions>
       </v-toolbar-items>
@@ -47,12 +28,12 @@
 export default {
   data () {
     return {
-      drawer: false,
-      item: 1,
+      tab: null,
       items: [
-        { text: 'Real-Time', icon: 'mdi-clock', to: '/about' },
-        { text: 'Seat', icon: 'mdi-account', to: '/about2' },
-        { text: 'Conversions', icon: 'mdi-flag', to: '/lectures/card' }
+        { tab: 'Home', to: '/' },
+        { tab: 'Seat', to: '/about2' },
+        { tab: 'Card', to: '/lectures/card' },
+        { tab: 'About', to: '/about' }
       ]
     }
   },
@@ -66,3 +47,7 @@ export default {
   }
 }
 </script>
+
+<style>
+
+</style>

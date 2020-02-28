@@ -31,10 +31,6 @@ export default new Router({
       component: () => import('./views/lectures/Layout.vue')
     },
     {
-      path: '/lectures/note',
-      component: () => import('./views/lectures/Note.vue')
-    },
-    {
       path: '/lectures/axios',
       component: () => import('./views/lectures/Axios.vue')
     },
