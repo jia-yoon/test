@@ -64,6 +64,5 @@ export default {
       console.log(r)
     }
   }
-
 }
 </script>
