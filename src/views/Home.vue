@@ -1,26 +1,14 @@
 <template>
   <v-carousel
     cycle
-    height="400"
-    hide-delimiter-background
+    height="auto"
     show-arrows-on-hover
   >
     <v-carousel-item
       v-for="(slide, i) in slides"
       :key="i"
+      :src="slide.src"
     >
-      <v-sheet
-        :color="colors[i]"
-        height="100%"
-      >
-        <v-row
-          class="fill-height"
-          align="center"
-          justify="center"
-        >
-          <div class="display-3">{{ slide }} Slide</div>
-        </v-row>
-      </v-sheet>
     </v-carousel-item>
   </v-carousel>
 </template>
@@ -29,19 +17,19 @@
 export default {
   data () {
     return {
-      colors: [
-        'indigo',
-        'warning',
-        'pink darken-2',
-        'red lighten-1',
-        'deep-purple accent-4'
-      ],
       slides: [
-        'First',
-        'Second',
-        'Third',
-        'Fourth',
-        'Fifth'
+        {
+          src: 'https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'
+        },
+        {
+          src: 'https://images.unsplash.com/photo-1510681916233-314f497f3301?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80'
+        },
+        {
+          src: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1307&q=80'
+        },
+        {
+          src: 'https://images.unsplash.com/photo-1564002439900-b78bfeb9786f?ixlib=rb-1.2.1&auto=format&fit=crop&w=998&q=80'
+        }
       ]
     }
   }

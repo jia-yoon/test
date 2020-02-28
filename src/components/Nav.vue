@@ -2,7 +2,7 @@
 <nav>
     <!-- navigation-drawer -->
     <v-navigation-drawer v-model="drawer" fixed app>
-      <v-list rounded>
+      <v-list>
       <v-subheader>Menu</v-subheader>
       <v-list-item-group v-model="item" color="pink">
         <v-list-item

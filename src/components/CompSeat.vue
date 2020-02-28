@@ -10,8 +10,8 @@ export default {
 
 <style>
 .comp-seat {
-  width: 50px;
-  height: 50px;
+  width: 25px;
+  height: 25px;
   border: 1px solid black;
 }
 </style>

@@ -1,12 +1,12 @@
 <template>
-    <CompFloor24 />
+    <CompFloor23 />
 </template>
 
 <script>
-import CompFloor24 from '@/components/CompFloor24'
+import CompFloor23 from '@/components/CompFloor23'
 export default {
   components: {
-    CompFloor24
+    CompFloor23
   }
 }
 </script>
