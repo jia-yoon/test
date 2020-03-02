@@ -2,6 +2,7 @@
   <v-app class="grey lighten-4">
     <Nav />
        <v-content>
+             <vue-progress-bar></vue-progress-bar>
       <router-view/>
     </v-content>
   </v-app>
