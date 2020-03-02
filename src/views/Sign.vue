@@ -1,76 +1,117 @@
 <template>
-  <!-- <v-card>
-    <v-card-title>
-      濡쒓렇??    </v-card-title>
-    <v-card-text>
-      <v-text-field
-        label="email"
-        v-model="email"
-      ></v-text-field>
-      <v-text-field
-        label="password"
-        v-model="password"
-        type="password"
-      ></v-text-field>
-    </v-card-text>
-    <v-card-actions>
-      <v-spacer></v-spacer>
-      <v-btn color="primary" @click="signInWithGoogle">
-        <v-icon>mdi-google</v-icon>
-        援ш?濡쒓렇??      </v-btn>
-      <v-btn color="primary" @click="signInEmail">
-        <v-icon>mdi-email</v-icon>
-        硫붿씪濡쒓렇??      </v-btn>
-      <v-btn color="primary" @click="signOut">
-        <v-icon>mdi-logout</v-icon>
-        濡쒓렇?꾩썐
-      </v-btn>
 
-    </v-card-actions>
-  </v-card> -->
+    <v-container
+        class="fill-height"
+        fluid
+      >
+        <v-row
+          align="center"
+          justify="center"
+        >
+          <v-col
+            cols="12"
+            sm="8"
+            md="4"
+          >
+            <v-card class="elevation-12">
+              <v-toolbar
+                color="#E0E0E0"
+                flat
+              >
+                <v-toolbar-title class="subtitle-2">To register your seat, please sign in !</v-toolbar-title>
+                <!-- <v-spacer />
+                <v-tooltip bottom>
+                  <template v-slot:activator="{ on }">
+                    <v-btn
+                      :href="source"
+                      icon
+                      large
+                      target="_blank"
+                      v-on="on"
+                    >
+                      <v-icon>mdi-code-tags</v-icon>
+                    </v-btn>
+                  </template>
+                  <span>Source</span>
+                </v-tooltip>
+                <v-tooltip right>
+                  <template v-slot:activator="{ on }">
+                    <v-btn
+                      icon
+                      large
+                      href="https://codepen.io/johnjleider/pen/pMvGQO"
+                      target="_blank"
+                      v-on="on"
+                    >
+                      <v-icon>mdi-codepen</v-icon>
+                    </v-btn>
+                  </template>
+                  <span>Codepen</span>
+                </v-tooltip> -->
+              </v-toolbar>
+              <v-card-text>
+                <v-form v-model="valid" ref="form" lazy-validation>
+                  <v-card-actions>
+                  <v-icon>mdi-account</v-icon>
+                  <v-text-field
+                    label="E-mail"
+                    :rules="emailRules"
+                    name="login"
+                    type="text"
+                    required
+                  />
+                  </v-card-actions>
+                  <v-card-actions>
+                    <v-icon>mdi-lock</v-icon>
+                  <v-text-field
+                    id="password"
+                    label="Password"
+                    :rules="passwordRules"
+                    name="password"
+                    type="password"
+                  />
+                  </v-card-actions>
+                </v-form>
+              </v-card-text>
 
-  <v-container grid-list-md>
-    <v-layout row wrap align-center justify-center>
-      <v-flex xs12 sm5 class="hidden-xs-only">
-        <v-img src="https://cfl.dropboxstatic.com/static/images/empty_states/sign-in-boulder@2x-vfl87XcA-.png"></v-img>
-
-      </v-flex>
-      <v-flex xs12 sm5>
-        <sign-in v-if="type"></sign-in>
-        <sign-up v-else></sign-up>
-      </v-flex>
-
-    </v-layout>
-  </v-container>
+              <v-card-actions>
+                <v-checkbox label="keep this session"></v-checkbox>
+                <v-spacer />
+                <v-btn color="primary" :disabled="!valid" @click="signInWithEmailAndPassword">Sign in</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-container>
 </template>
 
 <script>
-import SignIn from '@/components/auth/signIn'
 
 export default {
-  components: {
-    SignIn
-  },
+  // props: {
+  //   source: String
+  // },
   data () {
     return {
-      type: true,
-      email: '',
-      password: ''
+      valid: false,
+      lazy: false,
+      form: {
+        email: '',
+        password: ''
+      },
+      emailRules: [
+        v => !!v || 'E-mail is required',
+        v => /.+@.+\..+/.test(v) || 'E-mail must be valid'
+      ],
+      passwordRules: [
+        v => !!v || 'Password is required'
+      ]
     }
   },
   methods: {
-    async signInWithGoogle () {
-      const provider = new this.$firebase.auth.GoogleAuthProvider()
-      this.$firebase.auth().languageCode = 'ko'
-      await this.$firebase.auth().signInWithPopup(provider)
-    },
-    async signInEmail () {
-      const r = await this.$firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
-      console.log(r)
-    },
-    async signOut () {
-      const r = await this.$firebase.auth().signOut()
-      console.log(r)
+    async signInWithEmailAndPassword () {
+      if (!this.$refs.form.validate()) return this.$toasted.global.error('Please complete the form.')
+      await this.$firebase.auth().createUserWithEmailAndPassword(this.form.email, this.form.password)
     }
   }
 }

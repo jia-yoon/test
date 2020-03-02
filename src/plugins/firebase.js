@@ -20,12 +20,12 @@ Vue.prototype.$isFirebaseAuth = false
 
 firebase.auth().onAuthStateChanged((user) => {
   Vue.prototype.$isFirebaseAuth = true
-  console.log(user)
+  // console.log(user)
   if (user) {
     router.push('/')
   } else {
     router.push('/sign')
+    // 일단은 sign out하면 sign페이지로 가도록
   }
-  // store.commit('setUser', user)
   store.dispatch('getUser', user)
 })

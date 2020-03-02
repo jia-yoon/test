@@ -19,12 +19,7 @@ export default {
     }
   },
   methods: {
-    async signInWithGoogle () {
-      const provider = new this.$firebase.auth.GoogleAuthProvider()
-      this.$firebase.auth().languageCode = 'en'
-      const r = await this.$firebase.auth().signInWithPopup(provider)
-      console.log(r)
-    }
+
   }
 }
 </script>

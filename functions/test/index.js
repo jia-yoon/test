@@ -26,6 +26,6 @@ app.delete('/:id', (req, res) => {
   res.send('delete ok ' + req.params.id)
 })
 
-app.use(require('../middlewares/error'))
+// app.use(require('../middlewares/error'))
 
 module.exports = app
