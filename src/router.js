@@ -4,19 +4,28 @@ import Home from './views/Home.vue'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      beforeEnter: (to, from, next) => {
+        console.log('this is bfenter')
+        next()
+      }
     },
     {
       path: '/about',
       name: 'About',
       component: () => import('./views/About.vue')
+    },
+    {
+      path: '/sign',
+      name: 'Sign',
+      component: () => import('./views/Sign.vue')
     },
     {
       path: '/about2',
@@ -48,3 +57,14 @@ export default new Router({
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  console.log('bf each')
+  if (Vue.prototype.$isFirebaseAuth) next()
+})
+// router.afterEach((to, from, next) => {
+//   console.log('af each')
+//   next()
+// })
+
+export default router

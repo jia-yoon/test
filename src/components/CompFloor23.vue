@@ -2,7 +2,6 @@
   <div class="comp-floor-23">
     <h1>Floor 23</h1>
     <div class="floor floor-23">
-
       <div class="area area-1">
         <div class="sub-area h">
           <CompSeat id="01" />
@@ -15,7 +14,6 @@
           <CompSeat id="08" />
         </div>
       </div>
-
       <div class="area-group h">
        <div class="area area-2 h">
          <div class="sub-area v">

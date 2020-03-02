@@ -1,13 +1,14 @@
 <template>
   <v-carousel
     cycle
-    height="auto"
-    show-arrows-on-hover
+    :show-arrows="false"
+    delimiter-icon="mdi-minus"
   >
     <v-carousel-item
       v-for="(slide, i) in slides"
       :key="i"
       :src="slide.src"
+       height="auto"
     >
     </v-carousel-item>
   </v-carousel>
